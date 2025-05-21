@@ -1,0 +1,32 @@
+name: Unpack ZIP and Deploy Clean Structure
+
+on:
+  push:
+    paths:
+      - 'SportAI_Streamlit_Deploy_WithInit.zip'
+
+jobs:
+  unpack-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Unzip deployment archive
+        run: |
+          unzip SportAI_Streamlit_Deploy_WithInit.zip -d unpacked
+
+      - name: Move extracted contents to root
+        run: |
+          shopt -s dotglob
+          mv unpacked/* .
+          rm -rf unpacked
+
+      - name: Commit unpacked structure
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Unpacked and deployed correct folder structure"
+          git push
