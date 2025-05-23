@@ -9,6 +9,7 @@ if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
 from modules.ai.demand_forecasting import DemandForecaster
+from modules.sponsorship import partner_ecosystem_builder
 
 with open(os.path.join(BASE_DIR, 'users.json')) as f:
     users = json.load(f)
