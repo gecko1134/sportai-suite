@@ -125,6 +125,12 @@ ROLE_TOOLS = {
     "foundation": {
         "Campaign Optimization": campaign_optimizer_ui
     }
+ {
+    "Partner Ecosystem Builder": {
+        "function": partner_ecosystem_builder.run,
+        "role": ["Admin", "Board", "Sponsorship Manager"],
+        "category": "Sponsorship Tools"
+    }
 }
 
 def run():
